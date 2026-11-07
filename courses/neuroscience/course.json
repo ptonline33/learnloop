@@ -1,0 +1,213 @@
+{
+  "id": "neuroscience",
+  "title": "Basics of Neuroscience",
+  "subtitle": "How three pounds of cells think, feel, and remember",
+  "color": "#ff3d81",
+  "description": "Neurons and glia, action potentials, brain regions, neurotransmitters, and how learning physically rewires the brain. Plain language, real facts.",
+  "lessons": [
+    {
+      "title": "Meet the Neuron",
+      "body": "Your brain has roughly 86 billion neurons, and each one is a tiny living machine for carrying signals. A neuron has three main parts, and the signal always travels through them in the same order.\n\n**Dendrites** are the branching arms that receive incoming signals from other neurons. They feed into the **cell body** (the soma), which collects all that input and keeps the cell alive. When the input adds up to enough, a signal fires down the **axon**, a long output cable, and arrives at the **axon terminals**, where the neuron releases chemicals that nudge the next cell.\n\nMany axons wear a fatty coating called **myelin**, laid down by glial cells. Myelin works like insulation around a wire: it lets the signal jump between gaps in the coating and travel dramatically faster, up to about 100 meters per second instead of about 1. When myelin degrades, as in multiple sclerosis, signals slow down or stall, which shows what the coating was doing all along.\n\nGlia, by the way, are the other half of the brain: they outnumber neurons, feed them, clean up after them, and build myelin. Neurons get the fame, but they do not work alone.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Which part of a neuron receives incoming signals from other neurons?",
+          "options": ["Dendrites", "The axon", "The myelin", "The terminals"],
+          "answer": 0,
+          "explain": "Dendrites are the input side; the axon is the output side."
+        },
+        {
+          "type": "input",
+          "prompt": "What is the fatty coating around many axons that speeds up signals called?",
+          "answers": ["myelin", "myelin sheath", "the myelin sheath"],
+          "hint": "It is laid down by glial cells and works like insulation.",
+          "explain": "Myelin makes signals jump between gaps and travel far faster."
+        },
+        {
+          "type": "order",
+          "prompt": "Put the parts in the order a signal passes through a neuron",
+          "items": [
+            "Dendrites receive the signal",
+            "The cell body integrates the input",
+            "The signal travels down the axon",
+            "The axon terminals release chemicals toward the next cell"
+          ],
+          "explain": "Input at the dendrites, integration in the soma, output down the axon, delivery at the terminals."
+        }
+      ]
+    },
+    {
+      "title": "The Action Potential",
+      "body": "Neurons talk in a language of electricity. A resting neuron keeps the inside of its membrane at about **-70 millivolts**, a little battery maintained by pumps that trade sodium and potassium ions across the membrane. That negative voltage is the resting potential.\n\nWhen incoming signals push the voltage up to a threshold, around **-55 millivolts**, the neuron fires an **action potential**: a spike that sweeps down the axon. The spike is all-or-none, like a digital pulse: it either fires at full strength or does not fire at all. Louder input does not make a bigger spike, it makes more spikes per second.\n\nAt threshold, tiny voltage-gated channels open and **sodium ions rush into the cell**, flipping the inside positive for an instant. Then potassium channels open and let potassium flow out, restoring the negative resting state in about a millisecond. The spike propagates down the axon because each bit of opened channel triggers the next.\n\nAfter a spike, there is a brief **refractory period** where the neuron cannot fire again while its pumps reset. That pause sets a ceiling on how fast any neuron can talk, and it points the spikes one way only, dendrite to terminal.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "An action potential is best described as\u2026",
+          "options": [
+            "An all-or-none electrical spike that travels down the axon",
+            "A chemical that leaks out of the cell body",
+            "A gradual rise in voltage with no fixed size",
+            "A gap in the myelin coating"
+          ],
+          "answer": 0,
+          "explain": "It is a fixed-size digital pulse: it fires completely or not at all."
+        },
+        {
+          "type": "input",
+          "prompt": "About how many millivolts is a typical neuron's resting potential? Give the usual negative number.",
+          "answers": ["-70", "-70 mv", "-70mv", "-70 millivolts", "about -70"],
+          "hint": "A small negative number; think of a slightly charged battery.",
+          "explain": "About -70 mV at rest, and near -55 mV is where firing begins."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What happens at the threshold that starts the spike?",
+          "options": [
+            "Sodium channels open and sodium ions rush into the cell",
+            "Potassium floods in from outside",
+            "The myelin dissolves",
+            "The dendrites retract"
+          ],
+          "answer": 0,
+          "explain": "Inflowing sodium flips the inside positive: that is the rising edge of the spike."
+        }
+      ]
+    },
+    {
+      "title": "Brain Regions",
+      "body": "The cortex, the folded sheet on the outside of the brain, divides into lobes with specialties. The **frontal lobes**, behind your forehead, handle planning, decisions, and impulse control. The **parietal lobes**, at the top back, process touch and spatial sense. The **temporal lobes**, near your ears, process sound and language and help store memory. The **occipital lobe**, at the very back, is vision.\n\nBelow and behind the cortex sit other key structures. The **cerebellum** (\u201clittle brain\u201d) at the base fine-tunes movement, balance, and coordination. The **hippocampus**, a seahorse-shaped structure tucked inside each temporal lobe, is essential for forming new memories; without it you can hold a conversation but not remember it minutes later. The **amygdala**, almond-shaped and sitting near the hippocampus, is an alarm system tagging experiences with emotional weight, especially fear, and it can react before your thinking cortex even knows why your heart is pounding.\n\nThe brain stem, at the very bottom, runs the automatic systems, breathing and heartbeat, and is the most ancient part in evolutionary terms.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Which lobe mainly handles vision?",
+          "options": ["Occipital, at the back", "Frontal, behind the forehead", "Temporal, near the ears", "Parietal, at the top"],
+          "answer": 0,
+          "explain": "Vision lives at the back of the head, in the occipital lobe."
+        },
+        {
+          "type": "input",
+          "prompt": "Which seahorse-shaped structure is essential for forming new memories?",
+          "answers": ["hippocampus", "the hippocampus"],
+          "hint": "The name is Greek for seahorse.",
+          "explain": "The hippocampus files new experiences into long-term memory."
+        },
+        {
+          "type": "mcq",
+          "prompt": "The amygdala's best-known job is\u2026",
+          "options": [
+            "Acting as a danger alarm that tags experiences with emotional weight",
+            "Coordinating balance and fine movement",
+            "Pumping cerebrospinal fluid",
+            "Storing all your old memories"
+          ],
+          "answer": 0,
+          "explain": "The amygdala is the fast, emotional alarm system, especially for fear."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Which structure fine-tunes movement, balance, and coordination?",
+          "options": ["Cerebellum", "Hippocampus", "Amygdala", "Brain stem"],
+          "answer": 0,
+          "explain": "The 'little brain' at the base polishes motion and balance."
+        }
+      ]
+    },
+    {
+      "title": "Chemical Messengers",
+      "body": "Where one neuron meets the next, there is a microscopic gap called the **synapse**. The electrical spike cannot jump the gap, so the axon terminal releases **neurotransmitters**, chemicals that drift across and bind to receptors on the far side, nudging the next neuron toward firing or away from it.\n\nA few messengers matter most for everyday brain function. **Glutamate** is the main excitatory one: it pushes receiving neurons toward firing, and it is the workhorse of learning and information flow. **GABA** is the main inhibitory one: it quiets neurons down, and the balance between GABA and glutamate keeps the brain from seizing into chaos. **Dopamine** is not a pleasure chemical so much as a learning and motivation signal: it rises when something turns out better than expected and teaches the brain what is worth pursuing again, which is also why it is the center of the habit loop and of addiction. **Serotonin** helps regulate mood, appetite, and sleep, and low activity of it is linked to depressed mood, which is why many antidepressants target the serotonin system.\n\nThere are many more, and neurons often release several together, but this small cast explains an enormous amount of daily mental life.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Dopamine is best described as a\u2026",
+          "options": [
+            "Learning and motivation signal about what is worth pursuing again",
+            "Chemical that makes muscles contract",
+            "Pain signal in the spinal cord",
+            "Hormone made only in the gut"
+          ],
+          "answer": 0,
+          "explain": "Dopamine marks better-than-expected outcomes and drives motivation."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What does GABA typically do?",
+          "options": [
+            "Quiets neurons down (inhibitory)",
+            "Excites neurons into firing",
+            "Builds myelin",
+            "Carries oxygen in the blood"
+          ],
+          "answer": 0,
+          "explain": "GABA is the main inhibitory neurotransmitter: it turns the volume down."
+        },
+        {
+          "type": "input",
+          "prompt": "Which neurotransmitter is the main excitatory one in the human brain?",
+          "answers": ["glutamate"],
+          "hint": "It starts with G, and it is extremely common.",
+          "explain": "Glutamate pushes receiving neurons toward firing."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What happens at the synapse?",
+          "options": [
+            "Neurotransmitters drift across the gap and bind to receptors on the next neuron",
+            "The axons fuse together permanently",
+            "Electrical current arcs directly across the gap",
+            "Blood cells pass from one neuron to another"
+          ],
+          "answer": 0,
+          "explain": "The spike becomes chemistry at the gap, then electricity again on the far side."
+        }
+      ]
+    },
+    {
+      "title": "Learning and Plasticity",
+      "body": "For a long time people believed the adult brain was fixed wiring. It is not. **Neuroplasticity** is the fact that experience changes the brain: connections that get used together get stronger, and connections that go unused weaken and get pruned. The brain you have tonight is physically different from the one you woke up with.\n\nThe cellular poster child of learning is **LTP**, long-term potentiation: when two connected neurons fire together, the synapse between them strengthens, and the next signal passes through more easily. In short, cells that fire together, wire together. Practice, from piano to parallel parking, works because repetition drives this strengthening.\n\nSleep is when much of the filing happens. During deep sleep the hippocampus replays the day's experiences to the cortex, and the cortex gradually takes over storage, which is why an all-nighter before an exam backfires: the material never gets filed. Rest, exercise, and repetition are not soft extras to learning, they are the mechanism.\n\nThis lesson is the last one, and it loops back to the first: every exercise you completed today physically strengthened synapses in your own head. That is neuroscience doing its job.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Neuroplasticity means that\u2026",
+          "options": [
+            "The brain physically changes with experience and practice",
+            "The brain is fixed after childhood",
+            "Neurons can turn into blood cells",
+            "Thoughts travel faster than electricity"
+          ],
+          "answer": 0,
+          "explain": "Used connections strengthen, unused ones weaken: wiring follows use."
+        },
+        {
+          "type": "mcq",
+          "prompt": "During deep sleep, what does the hippocampus do for your memory?",
+          "options": [
+            "Replays the day's experiences to the cortex for long-term storage",
+            "Deletes everything from the day",
+            "Stops communicating with the cortex",
+            "Converts memories into myelin"
+          ],
+          "answer": 0,
+          "explain": "Sleep is the filing system: replay tonight, remember next month."
+        },
+        {
+          "type": "input",
+          "prompt": "What is the three-letter abbreviation for the long-lasting strengthening of a synapse that underlies learning?",
+          "answers": ["ltp"],
+          "hint": "Long-Term ______.",
+          "explain": "LTP: long-term potentiation, cells that fire together wire together."
+        },
+        {
+          "type": "order",
+          "prompt": "Put the steps of how practice strengthens a connection in order",
+          "items": [
+            "Two connected neurons fire together",
+            "The synapse between them strengthens",
+            "The next signal passes through more easily",
+            "The connection becomes easier to reuse later"
+          ],
+          "explain": "Co-firing, then strengthening, then easier passage, then a habit of connection."
+        }
+      ]
+    }
+  ]
+}

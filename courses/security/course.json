@@ -1,0 +1,252 @@
+{
+  "id": "security",
+  "title": "Basics of Computer Security",
+  "subtitle": "How to stay safe without the paranoia",
+  "color": "#3ddc84",
+  "description": "Passwords that hold, phishing you can spot, malware by name, and the everyday habits — updates, 2FA, backups — that keep the bad guys out. No fear, just fundamentals.",
+  "lessons": [
+    {
+      "title": "What Is Computer Security?",
+      "body": "Computer security is the practice of keeping three promises, and the whole field is organized around them. **Confidentiality**: only the right people can read the data. **Integrity**: the data and systems stay correct and unmodified. **Availability**: the systems actually work when needed. Together they are the **CIA triad**, and almost every attack breaks one of the three.\n\nA useful mental shift: you are almost never being targeted personally. Most attacks are **opportunistic** — automated software that scans the whole internet for anyone with an unpatched router, a reused password, or a moment of trust. That is actually good news, because it means basic habits put you ahead of most of the internet.\n\nThe last idea for this lesson is **defense in depth**: never bet everything on a single wall. A strong password plus two-factor plus backups means one mistake is annoying instead of fatal.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Your medical records should be readable only by you and your doctors. Which goal of security is that?",
+          "options": [
+            "Confidentiality",
+            "Integrity",
+            "Availability",
+            "Compatibility"
+          ],
+          "answer": 0,
+          "explain": "Confidentiality is the 'only the right people can read it' promise."
+        },
+        {
+          "type": "mcq",
+          "prompt": "A news site keeps getting knocked offline by floods of junk traffic. Which promise is being broken?",
+          "options": [
+            "Availability",
+            "Confidentiality",
+            "Integrity",
+            "Anonymity"
+          ],
+          "answer": 0,
+          "explain": "If the service is down, availability is broken — this is what a denial-of-service attack does."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What is the idea behind defense in depth?",
+          "options": [
+            "Use several layers of protection so a single failure is not fatal",
+            "Build one perfect, unbreakable wall",
+            "Hide your devices from the internet",
+            "Make security someone else's job"
+          ],
+          "answer": 0,
+          "explain": "Layers — password plus 2FA plus backups — mean one slip does not sink you."
+        },
+        {
+          "type": "input",
+          "prompt": "Confidentiality, integrity, availability: by what three-letter acronym is this triad known?",
+          "answers": ["cia", "c.i.a", "c.i.a."],
+          "hint": "The spies' initials.",
+          "explain": "The CIA triad: confidentiality, integrity, availability."
+        }
+      ]
+    },
+    {
+      "title": "Passwords and Authentication",
+      "body": "A password proves you are you, and almost everything else rides on it. The surprise is what makes one strong: **length beats cleverness**. `P@ssw0rd!` looks tricky but sits in every cracking dictionary, while a long passphrase like *pine-tundra-violin-mango* would take centuries to guess. Four or more random words are both stronger and easier to remember than a mangled short one.\n\nThe bigger sin is **reuse**. When any site you used gets breached, attackers feed the leaked email + password pairs into every other site automatically. This is called **credential stuffing**, and it is why one careless forum password can eventually open your email. The fix: a unique password per site, which is only humanly possible with a **password manager** — it invents and remembers them all for you.\n\nThe second lock on the door is **two-factor authentication (2FA)**: something you know (the password) plus something you have (a code from an app or a security key). With 2FA on, a stolen password alone is not enough to get in. Turn it on for email first: your email can reset everything else.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Which of these passwords is the strongest in practice?",
+          "options": [
+            "A long random passphrase like pine-tundra-violin-mango",
+            "P@ssw0rd!",
+            "Your dog's name plus your birth year",
+            "password2"
+          ],
+          "answer": 0,
+          "explain": "Length wins: a long random passphrase is far outside what cracking tools can reach."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Why is reusing one password across many sites so dangerous?",
+          "options": [
+            "Because once one site is breached, attackers try that pair everywhere — this is credential stuffing",
+            "Because reused passwords expire faster",
+            "Because browsers refuse to save them",
+            "Because it makes each site slower"
+          ],
+          "answer": 0,
+          "explain": "Breach one site, own them all — that is the arithmetic of password reuse."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What does a password manager do for you?",
+          "options": [
+            "Invents a unique strong password for every site and remembers them all",
+            "Makes all your passwords public so you never lose them",
+            "Replaces passwords with your birthday",
+            "Encrypts the internet"
+          ],
+          "answer": 0,
+          "explain": "You remember one master passphrase; it handles the rest."
+        },
+        {
+          "type": "input",
+          "prompt": "What does 2FA stand for?",
+          "answers": ["two-factor authentication", "two factor authentication", "2-factor authentication", "2fa authentication"],
+          "hint": "The '2' is the count of locks: something you know plus something you have.",
+          "explain": "Two-factor authentication: a password plus a second proof, like a code from an app."
+        }
+      ]
+    },
+    {
+      "title": "Phishing and Social Engineering",
+      "body": "The cheapest way into an account is not breaking the lock — it is asking you to open the door. **Social engineering** is hacking the human, and **phishing** is its main weapon: a fake message pretending to be your bank, a delivery service, or your boss, pushing you to click a link and log in on a lookalike page.\n\nPhishing messages follow a script you can learn to see. They push **urgency** (\"your account will be closed in 24 hours!\") or dangle a **prize**. The sender address is slightly off (`support@yourbank-security.com`). The link text says one thing but points somewhere else. And they want something specific: a login, a code, a payment, an attachment opened.\n\nThe counter-move is simple and always the same: **verify out of band**. Do not click; instead open the official app or type the company's address yourself, or call the number on your card. And remember the golden rule — real companies never ask for your full password or a 2FA code. Text-message phishing has its own name, **smishing** (SMS + phishing), and phone-call phishing is **vishing**.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "An email says your account will be closed in 24 hours unless you click a link and log in. What is the classic tell?",
+          "options": [
+            "Urgency pushing you to click a link and hand over a login",
+            "It arrived on a Tuesday",
+            "It has an attachment",
+            "It is short"
+          ],
+          "answer": 0,
+          "explain": "Urgency is the hook: it exists to make you act before you think."
+        },
+        {
+          "type": "mcq",
+          "prompt": "You get a suspicious 'bank' email. What is the safe move?",
+          "options": [
+            "Ignore the link and check the message through the bank's official app or its real phone number",
+            "Click the link but type carefully",
+            "Reply and ask if it is really them",
+            "Forward it to a friend for a second opinion"
+          ],
+          "answer": 0,
+          "explain": "Verify out of band: reach the company yourself, through a channel you trust."
+        },
+        {
+          "type": "input",
+          "prompt": "Phishing delivered by text message has its own name, starting the way SMS does. What is it?",
+          "answers": ["smishing", "smishing (sms phishing)"],
+          "hint": "SM + phishing.",
+          "explain": "Smishing is phishing over SMS."
+        },
+        {
+          "type": "order",
+          "prompt": "An urgent 'bank' email lands in your inbox. Put the safe handling steps in order",
+          "items": [
+            "Stop, and do not click the link",
+            "Look for tells: odd sender address, urgency, mismatched link",
+            "Open the bank's official app or call its real number",
+            "Report the message as phishing or delete it"
+          ],
+          "explain": "Pause, inspect, verify through a trusted channel, then report or delete."
+        }
+      ]
+    },
+    {
+      "title": "Malware, From Viruses to Ransomware",
+      "body": "**Malware** is the umbrella word for any software written to cause harm, and it comes in a small zoo of shapes worth knowing by name.\n\nA **virus** attaches itself to other files and spreads when a human passes the file along. A **worm** needs no help: it copies itself across networks on its own, which is why one unpatched laptop can infect a whole office overnight. A **trojan** (think Trojan horse) disguises itself as something useful — a 'free' game, a cracked program, a fake installer — and opens a door once you run it. **Ransomware** is the crudest business model of all: it encrypts your files, then demands payment for the key.\n\nIf ransomware ever lands on you, the plan is already written: disconnect from the network, do not pay (paying marks you as a payer, and the key often does not come), wipe the machine, and restore from backups. Which quietly reveals the real defense: **backups** make ransomware an inconvenience instead of a catastrophe.\n\nMost malware still walks in through the front door — email attachments, downloads from 'too good to be true' sites, and pirated software. Updated software and a healthy skepticism about what you run are the vaccine.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Which malware locks up your files and demands money for the key?",
+          "options": [
+            "Ransomware",
+            "Adware",
+            "A worm",
+            "A keylogger"
+          ],
+          "answer": 0,
+          "explain": "Ransomware encrypts your files and holds them for ransom."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Malware that disguises itself as a useful or free program is called a\u2026",
+          "options": [
+            "Trojan",
+            "Worm",
+            "Virus",
+            "Rootkit"
+          ],
+          "answer": 0,
+          "explain": "Like the wooden horse: it looks like a gift and hides an attack."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Ransomware hits your laptop, and you have working backups. What is the sensible response?",
+          "options": [
+            "Disconnect, wipe the machine, and restore from your backups — without paying",
+            "Pay quickly to get the files back",
+            "Ignore it and keep working",
+            "Post the ransom note on social media"
+          ],
+          "answer": 0,
+          "explain": "Don't feed the business model: backups mean you already have your files."
+        },
+        {
+          "type": "input",
+          "prompt": "What is the umbrella term for any software written to cause harm?",
+          "answers": ["malware", "malicious software", "mal ware"],
+          "hint": "Mal- as in 'bad', plus -ware as in software.",
+          "explain": "Malware — short for malicious software — covers viruses, worms, trojans, and ransomware."
+        }
+      ]
+    },
+    {
+      "title": "Updates, Wi-Fi, and Other Everyday Habits",
+      "body": "Every piece of software has holes found after it ships. When a hole is discovered, the vendor writes a **patch**, and the update that delivers it is the fix. The race that follows is predictable: attackers immediately start hunting machines that never installed it. Installing updates promptly — turning on automatic updates is even better — is the closest thing to a free lunch in security.\n\nThe **padlock** in your browser's address bar means the connection is encrypted (HTTPS), so nobody in the middle can read or alter the traffic. It does **not** mean the site is honest — a phishing page can have a perfectly good padlock. The lock protects the journey, not the destination.\n\nPublic Wi-Fi is convenient and slightly risky: on an open network you cannot fully trust, others may try to watch or tamper. The calm response is to prefer your phone's hotspot or cellular data for anything sensitive, or route through a **VPN** (virtual private network), which builds an encrypted tunnel to a server you trust.\n\nAnd a few one-time setups carry permanent weight: lock screens on every device, disk encryption (FileVault, BitLocker) so a stolen laptop yields nothing, a firewall, and backups kept separate from the machine — ideally one copy somewhere else entirely.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "The padlock icon in the browser address bar means\u2026",
+          "options": [
+            "The connection is encrypted — not that the site itself is trustworthy",
+            "The site has been verified as honest by the browser",
+            "The site cannot contain viruses",
+            "Your password is safe on that site"
+          ],
+          "answer": 0,
+          "explain": "The lock covers the journey; a scam site can still have a lock on its door."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Why does installing updates promptly matter so much?",
+          "options": [
+            "Because attackers actively hunt machines that never installed the patch",
+            "Because updates delete old passwords",
+            "Because unpatched software runs slower",
+            "Because it is required by law"
+          ],
+          "answer": 0,
+          "explain": "Once a hole is public, the unpatched are the easy targets."
+        },
+        {
+          "type": "input",
+          "prompt": "What does VPN stand for?",
+          "answers": ["virtual private network", "virtual private networks"],
+          "hint": "It builds a private, encrypted tunnel through a network you do not trust.",
+          "explain": "A virtual private network encrypts your traffic until it reaches a server you trust."
+        },
+        {
+          "type": "order",
+          "prompt": "Put the life of a security hole in order, from discovery to fix",
+          "items": [
+            "A researcher discovers a security hole in an app",
+            "The vendor writes and ships a patch",
+            "Attackers hunt for machines that never installed it",
+            "You install the update and close the hole"
+          ],
+          "explain": "Discovery, patch, exploit-the-laggards, install — this is why 'later' is a losing strategy."
+        }
+      ]
+    }
+  ]
+}

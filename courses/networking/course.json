@@ -1,0 +1,210 @@
+{
+  "id": "networking",
+  "title": "Learn Computer Networking from Scratch",
+  "subtitle": "How the internet actually delivers things",
+  "color": "#3ee6ff",
+  "description": "LANs and WANs, IP addresses and DNS, TCP and UDP, HTTP and HTTPS, and the boxes in your home that move the bits. No jargon without a translation.",
+  "lessons": [
+    {
+      "title": "What Is a Network?",
+      "body": "A computer network is just machines that agreed on a common language for exchanging data. Your home network is a good example: your laptop, phone, and printer talk to each other and, through your router, to the rest of the world.\n\nNetworks come in sizes. A **LAN** (local area network) is a small one: your home, an office, a school. A **WAN** (wide area network) spans cities or countries, and the internet is the giant WAN of WANs, built from millions of smaller networks that all interconnect.\n\nMost conversations follow the **client\u2013server** pattern: your device, the client, asks for something, and a server, a machine built to answer, responds. When your browser asks for a page, it is the client. ISPs (internet service providers) are the companies that own the big pipes connecting all these networks together.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Your home Wi-Fi and the devices using it are best described as a\u2026",
+          "options": ["LAN (local area network)", "WAN (wide area network)", "Server", "Protocol"],
+          "answer": 0,
+          "explain": "A home network is small and local, which makes it a LAN."
+        },
+        {
+          "type": "mcq",
+          "prompt": "When your browser asks a web server for a page, your device is acting as the\u2026",
+          "options": ["Client", "Server", "Router", "ISP"],
+          "answer": 0,
+          "explain": "The asker is the client; the answerer is the server."
+        },
+        {
+          "type": "input",
+          "prompt": "What does ISP stand for?",
+          "answers": ["internet service provider", "internet service providers"],
+          "hint": "The company you pay for internet access.",
+          "explain": "Your ISP connects your home network to the wider internet."
+        }
+      ]
+    },
+    {
+      "title": "IP Addresses and DNS",
+      "body": "Every machine on a network needs an address, the way every house needs a street address. On the internet that address is an **IP address**. The classic form, IPv4, is four numbers separated by dots, like `192.168.1.1`, each number from 0 to 255. Your router hands out addresses like these to every device at home.\n\nBut people are bad at remembering numbers and good at remembering names. That is the whole job of **DNS** (the domain name system): it looks up a name like `www.example.com` and returns the IP address the machines actually use. It works like a phone book, and there are DNS servers all over the world answering these lookups billions of times a day.\n\nSo when you type an address into your browser, a defined chain of events begins, and you will use it in the exercise below.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "What does DNS do?",
+          "options": [
+            "It turns website names into IP addresses",
+            "It encrypts your traffic",
+            "It speeds up your Wi-Fi signal",
+            "It assigns passwords to devices"
+          ],
+          "answer": 0,
+          "explain": "DNS is the lookup service: name in, IP address out."
+        },
+        {
+          "type": "input",
+          "prompt": "How many numbers, separated by dots, make up a classic IPv4 address?",
+          "answers": ["4", "four"],
+          "hint": "Count the parts in 192.168.1.1.",
+          "explain": "IPv4 addresses have four parts, like 192.168.1.1."
+        },
+        {
+          "type": "order",
+          "prompt": "Put these steps in the order they happen after you type a web address into your browser",
+          "items": [
+            "You type www.example.com into the browser",
+            "DNS finds the IP address for that name",
+            "Your computer connects to the server at that address",
+            "The server sends the page back",
+            "The browser displays the page"
+          ],
+          "explain": "Name lookup first, then connection, then request and response, then display."
+        }
+      ]
+    },
+    {
+      "title": "TCP, UDP, and Ports",
+      "body": "Data travels in small pieces called **packets**. Two transport protocols carry most of them, and they make opposite trade-offs.\n\n**TCP** is careful: before any data flows, the two machines do a handshake and agree to talk. TCP numbers every packet, checks that each one arrived, and resends anything that was lost. If a packet arrives out of order, TCP puts it back in order. This is why web pages, downloads, and email use TCP: correctness matters more than a few milliseconds.\n\n**UDP** is fast and careless: it fires packets off with no handshake and no promise of delivery. For a live video call or a game, a packet that arrives late is worthless anyway, so it is better to skip it and keep moving. That is why streaming and gaming often prefer UDP.\n\n**Ports** are like apartment numbers on top of the IP street address. The IP address gets you to the right machine, and the port gets you to the right program there. Some ports are famous: web traffic uses 80 (plain) and 443 (encrypted), and DNS itself uses 53.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Why do live video calls often use UDP?",
+          "options": [
+            "Because a slightly late packet is useless anyway, so speed beats perfect delivery",
+            "Because UDP is more secure than TCP",
+            "Because UDP can carry bigger files",
+            "Because calls do not need addresses"
+          ],
+          "answer": 0,
+          "explain": "UDP skips the handshake and the resend machinery, which keeps delay low."
+        },
+        {
+          "type": "mcq",
+          "prompt": "TCP is called reliable because it\u2026",
+          "options": [
+            "Checks that every packet arrived and resends lost ones",
+            "Uses bigger cables",
+            "Compresses the data",
+            "Never disconnects"
+          ],
+          "answer": 0,
+          "explain": "Numbering, ordering, and resending are exactly what reliability means here."
+        },
+        {
+          "type": "input",
+          "prompt": "Which port number does HTTPS normally use?",
+          "answers": ["443"],
+          "hint": "Plain HTTP is 80; the encrypted version adds 363.",
+          "explain": "HTTPS traffic goes to port 443."
+        },
+        {
+          "type": "input",
+          "prompt": "Which port does DNS use?",
+          "answers": ["53"],
+          "hint": "A small, odd number.",
+          "explain": "DNS runs on port 53."
+        }
+      ]
+    },
+    {
+      "title": "HTTP and HTTPS",
+      "body": "Browsers and web servers speak **HTTP**, a simple request\u2013response language. The browser sends a request with a **method** (what it wants to do) and the server sends back a **status code** (how it went).\n\nThe methods you meet first: **GET** asks for something, and **POST** sends data to the server, like submitting a form or uploading a photo. DELETE and PUT exist too, and you will meet them when you meet APIs.\n\nStatus codes come in families. `200` means success. `301` means \"moved permanently, go to the new address.\" `404` is the famous one: \"the server is fine, but it has no page at that address.\" `500` means the server itself broke.\n\n**HTTPS** is the same HTTP carried over **TLS**, an encryption layer. With plain HTTP anyone watching the traffic can read it; with HTTPS they see only an encrypted stream, and your browser also verifies the server's certificate, the digital ID card proving the server is who it claims to be.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "What does an HTTP 404 status code mean?",
+          "options": [
+            "The server is up but has no page at that address",
+            "The server crashed",
+            "The page moved permanently",
+            "Everything worked"
+          ],
+          "answer": 0,
+          "explain": "4xx codes are the browser's fault side: the address asked for does not exist there."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Which HTTP method does a browser normally use when you open a web page?",
+          "options": ["GET", "POST", "DELETE", "PATCH"],
+          "answer": 0,
+          "explain": "Opening a page is asking to get its contents, so the method is GET."
+        },
+        {
+          "type": "order",
+          "prompt": "Put the steps of loading a page over HTTPS in order",
+          "items": [
+            "The browser checks the site's certificate",
+            "Browser and server agree on encryption keys",
+            "The browser sends the encrypted request",
+            "The server replies with encrypted data",
+            "The browser decrypts and displays the page"
+          ],
+          "explain": "Certificate and keys come first, then encrypted traffic flows."
+        },
+        {
+          "type": "input",
+          "prompt": "Which HTTP method is normally used to submit form data to a server?",
+          "answers": ["post"],
+          "hint": "Think of mailing a package versus asking for one.",
+          "explain": "POST sends data in the request body."
+        }
+      ]
+    },
+    {
+      "title": "Routers, Switches, and Wi-Fi",
+      "body": "Three boxes do most of the work in a home network. The **modem** (often built into the router now) is the translator to your ISP's line, whether that line is cable, fiber, or phone wiring. It is literally the doorway between your home and the internet.\n\nThe **router** is the traffic director. It connects your home LAN to the internet, and it decides which device each incoming packet belongs to, using a technique called NAT. It also usually hands out IP addresses to your devices, and doubles as the Wi-Fi radio.\n\nThe **switch** is a simpler device for wired networks: it connects several machines on the same LAN and moves frames between just those machines, quickly and quietly. Big offices have many switches feeding one router.\n\nWi-Fi itself is a radio network with a name, the **SSID**, and it is only as safe as its password. Modern security is called WPA2 or WPA3, and there is never a good reason to run an open home network.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "A switch mainly connects\u2026",
+          "options": [
+            "Devices inside one local network",
+            "Your home to your ISP",
+            "Two different countries",
+            "Servers to their power supply"
+          ],
+          "answer": 0,
+          "explain": "A switch moves traffic within one LAN; crossing networks is the router's job."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What is an SSID?",
+          "options": [
+            "The name of a Wi-Fi network",
+            "The Wi-Fi password",
+            "A kind of router",
+            "A radio frequency"
+          ],
+          "answer": 0,
+          "explain": "The SSID is the network name you pick from the Wi-Fi list."
+        },
+        {
+          "type": "input",
+          "prompt": "Which device connects your home network to your ISP's line?",
+          "answers": ["modem", "the modem"],
+          "hint": "It is often combined with the router in one box.",
+          "explain": "The modem translates between your home and the ISP's wiring."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Why should your home Wi-Fi use WPA2 or WPA3 rather than nothing?",
+          "options": [
+            "Because otherwise anyone nearby can use and read your network traffic",
+            "Because Wi-Fi does not work without a password",
+            "Because the router requires it by law",
+            "Because passwords make Wi-Fi faster"
+          ],
+          "answer": 0,
+          "explain": "An open network is readable and usable by strangers; WPA2/3 encrypts it."
+        }
+      ]
+    }
+  ]
+}

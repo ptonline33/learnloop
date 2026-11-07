@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Learnloop</title>
+  <meta name="description" content="Learn by doing. Short lessons with hands-on exercises: Markdown, networking, SQL, neuroscience, and more.">
+  <meta name="theme-color" content="#0d0b1e">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <button id="homeBtn" class="pill" type="button" hidden>&larr; Library</button>
+    <a class="brand" href="#/">Learnloop</a>
+    <span id="progressPill" class="progress-pill" hidden></span>
+  </header>
+
+  <main>
+    <section id="libraryView" class="view">
+      <div class="hero">
+        <h1>Learn it. <span class="grad">Do it. Remember it.</span></h1>
+        <p>Short lessons with hands-on exercises and instant feedback. Everything runs right here in your browser, even offline.</p>
+      </div>
+      <div id="courseGrid" class="grid" aria-live="polite">
+        <p class="muted">Loading courses&hellip;</p>
+      </div>
+    </section>
+
+    <section id="courseView" class="view" hidden>
+      <div class="course-head">
+        <h2 id="courseTitle"></h2>
+        <p id="courseDesc" class="muted"></p>
+        <div class="course-progress">
+          <div class="bar"><div id="courseBar"></div></div>
+          <span id="courseProgressText" class="muted"></span>
+        </div>
+      </div>
+      <div id="lessonList"></div>
+    </section>
+
+    <section id="lessonView" class="view" hidden>
+      <div class="lesson-head">
+        <h2 id="lessonTitle"></h2>
+        <span id="lessonMeta" class="muted"></span>
+      </div>
+      <article id="lessonBody" class="lesson-body"></article>
+      <h3 class="ex-section">Exercises</h3>
+      <div id="exercises"></div>
+      <nav class="page-nav" aria-label="Lesson navigation">
+        <button id="prevLesson" class="page-btn" type="button">&larr; Previous lesson</button>
+        <span id="lessonLabel" class="page-label"></span>
+        <button id="nextLesson" class="page-btn" type="button">Next lesson &rarr;</button>
+      </nav>
+      <p id="lessonError" class="error" hidden></p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="vendor/marked.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

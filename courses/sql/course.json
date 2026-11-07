@@ -1,0 +1,396 @@
+{
+  "id": "sql",
+  "title": "Learn SQL from Scratch",
+  "subtitle": "Ask questions, get answers, from a real database in your browser",
+  "color": "#7b5cff",
+  "description": "SELECT, WHERE, ORDER BY, LIMIT, counting, and JOINs, run against a small library database built right into the page. Every answer is checked against real results.",
+  "lessons": [
+    {
+      "title": "Your First SELECT",
+      "body": "SQL is the language for asking a database questions. A database stores data in **tables**: a table is a grid with named columns and rows, one row per thing. This course runs on two small tables you can inspect under each exercise: `books` and `authors`.\n\nAlmost every question starts with the same three words: what, from where, and (sometimes) under what conditions. In SQL that is:\n\n```sql\nSELECT * FROM books;\n```\n\nRead it aloud: select every column (`*`) from the books table. To take only some columns, name them instead:\n\n```sql\nSELECT title, year FROM books;\n```\n\nThe result is always a fresh grid: the columns you asked for, and the rows that survived your conditions.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "In SQL, a table is made of\u2026",
+          "options": ["Rows and named columns", "Pages and bookmarks", "Files and folders", "Clients and servers"],
+          "answer": 0,
+          "explain": "A table is a grid: a row per item, a column per property."
+        },
+        {
+          "type": "sql",
+          "prompt": "Show every column of every book.",
+          "starter": "SELECT ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] },
+            { "name": "authors", "columns": ["id", "name", "country"], "rows": [
+              [1, "Ursula K. Le Guin", "USA"],
+              [2, "Haruki Murakami", "Japan"],
+              [3, "Jorge Luis Borges", "Argentina"],
+              [4, "Toni Morrison", "USA"],
+              [5, "Italo Calvino", "Italy"]
+            ] }
+          ],
+          "solution": "SELECT * FROM books",
+          "expected": {
+            "columns": ["id", "title", "author_id", "year", "pages", "genre"],
+            "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ]
+          },
+          "explain": "SELECT * returns every column of every row."
+        },
+        {
+          "type": "sql",
+          "prompt": "Show only the title and year of each book (in that order).",
+          "starter": "SELECT ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] }
+          ],
+          "solution": "SELECT title, year FROM books",
+          "expected": {
+            "columns": ["title", "year"],
+            "rows": [
+              ["A Wizard of Earthsea", 1968],
+              ["The Left Hand of Darkness", 1969],
+              ["Kafka on the Shore", 2002],
+              ["Norwegian Wood", 1987],
+              ["Ficciones", 1944],
+              ["Beloved", 1987],
+              ["Invisible Cities", 1972],
+              ["The Dispossessed", 1974]
+            ]
+          },
+          "explain": "Name the columns you want, in the order you want them."
+        }
+      ]
+    },
+    {
+      "title": "Filtering with WHERE",
+      "body": "Raw SELECT gives you everything. Real questions have conditions, and `WHERE` is where they go:\n\n```sql\nSELECT title FROM books WHERE genre = 'Fantasy';\n```\n\nText values get single quotes; numbers do not. Beyond `=`, comparisons work the way you expect: `<`, `>`, `<=`, `>=`, and `!=` for not equal. Combine conditions with `AND` and `OR`, and flip one with `NOT`:\n\n```sql\nSELECT title FROM books WHERE year > 1960 AND pages < 200;\n```\n\nOne classic beginner slip: forgetting the quotes. `WHERE genre = Fantasy` reads Fantasy as a column name, and the database will complain that no such column exists.",
+      "exercises": [
+        {
+          "type": "sql",
+          "prompt": "List the title of every Fantasy book.",
+          "starter": "SELECT title FROM books WHERE ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] }
+          ],
+          "solution": "SELECT title FROM books WHERE genre = 'Fantasy'",
+          "expected": {
+            "columns": ["title"],
+            "rows": [["A Wizard of Earthsea"], ["The Left Hand of Darkness"]]
+          },
+          "hint": "Text values need single quotes.",
+          "explain": "The filter kept exactly the two Fantasy rows."
+        },
+        {
+          "type": "sql",
+          "prompt": "List the title and pages of books with more than 300 pages.",
+          "starter": "SELECT title, pages FROM books WHERE ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] }
+          ],
+          "solution": "SELECT title, pages FROM books WHERE pages > 300",
+          "expected": {
+            "columns": ["title", "pages"],
+            "rows": [
+              ["Kafka on the Shore", 467],
+              ["The Left Hand of Darkness", 304],
+              ["Beloved", 324],
+              ["The Dispossessed", 341]
+            ]
+          },
+          "hint": "Numbers do not need quotes.",
+          "explain": "Four books beat 300 pages."
+        },
+        {
+          "type": "input",
+          "prompt": "Which keyword introduces a filter condition in a SQL query?",
+          "answers": ["where"],
+          "hint": "It comes right after the table name.",
+          "explain": "WHERE introduces the condition rows must satisfy."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Why does `WHERE genre = Fantasy` fail while `WHERE genre = 'Fantasy'` works?",
+          "options": [
+            "Without quotes, Fantasy is read as a column name, and there is no such column",
+            "Fantasy is a reserved word in SQL",
+            "Quotes make the query faster",
+            "Both actually work in every database"
+          ],
+          "answer": 0,
+          "explain": "Bare words are identifiers; quoted words are text values."
+        }
+      ]
+    },
+    {
+      "title": "Sorting and Limiting",
+      "body": "Databases do not promise any natural order. If you want an order, you have to ask for it:\n\n```sql\nSELECT title, year FROM books ORDER BY year DESC;\n```\n\n`ASC` is ascending (the default when you say nothing), `DESC` is descending. Sorting happens before trimming, so the classic pattern for \"top 3 of anything\" is sort, then cut:\n\n```sql\nSELECT title, pages FROM books ORDER BY pages DESC LIMIT 3;\n```\n\n`LIMIT` simply keeps the first N rows of whatever came out. Together, ORDER BY plus LIMIT answers everyday questions like \"the five newest\", \"the three biggest\", \"the first ten\".",
+      "exercises": [
+        {
+          "type": "sql",
+          "prompt": "List the title and year of the five oldest books, oldest first.",
+          "starter": "SELECT title, year FROM books ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] }
+          ],
+          "solution": "SELECT title, year FROM books ORDER BY year ASC LIMIT 5",
+          "expected": {
+            "columns": ["title", "year"],
+            "rows": [
+              ["Ficciones", 1944],
+              ["A Wizard of Earthsea", 1968],
+              ["The Left Hand of Darkness", 1969],
+              ["Invisible Cities", 1972],
+              ["The Dispossessed", 1974]
+            ]
+          },
+          "ordered": true,
+          "hint": "Sort ascending, then LIMIT 5.",
+          "explain": "ORDER BY year ASC, then LIMIT 5 keeps the five oldest."
+        },
+        {
+          "type": "sql",
+          "prompt": "List the title and pages of the three longest books, longest first.",
+          "starter": "SELECT title, pages FROM books ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] }
+          ],
+          "solution": "SELECT title, pages FROM books ORDER BY pages DESC LIMIT 3",
+          "expected": {
+            "columns": ["title", "pages"],
+            "rows": [
+              ["Kafka on the Shore", 467],
+              ["The Dispossessed", 341],
+              ["Beloved", 324]
+            ]
+          },
+          "ordered": true,
+          "hint": "DESC for descending, then LIMIT 3.",
+          "explain": "Sort by pages DESC, cut to three."
+        },
+        {
+          "type": "mcq",
+          "prompt": "If you write ORDER BY without ASC or DESC, which direction do you get?",
+          "options": ["Ascending", "Descending", "Random", "An error"],
+          "answer": 0,
+          "explain": "ASC is the default sort direction."
+        }
+      ]
+    },
+    {
+      "title": "Counting and Averaging",
+      "body": "Sometimes the answer is not a list of rows but a single number. Aggregate functions collapse a whole table into one value:\n\n```sql\nSELECT COUNT(*) FROM books;\nSELECT AVG(pages) FROM books;\n```\n\n`COUNT(*)` counts rows. `COUNT(column)` counts the rows where that column is not empty, which matters once you meet missing data (NULLs). `SUM` adds a column up, `MIN` and `MAX` find the ends, and `AVG` is the mean. They also combine with WHERE, because the aggregate sees only the filtered rows.\n\nThe result of an aggregate query is one row: the function columns you asked for, and nothing else.",
+      "exercises": [
+        {
+          "type": "sql",
+          "prompt": "How many books are in the table? Show just the count.",
+          "starter": "SELECT ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] }
+          ],
+          "solution": "SELECT COUNT(*) FROM books",
+          "expected": { "columns": ["COUNT(*)"], "rows": [[8]] },
+          "hint": "COUNT with a star inside parentheses.",
+          "explain": "Eight books, one number."
+        },
+        {
+          "type": "sql",
+          "prompt": "What is the average page count of all the books? Show just the average.",
+          "starter": "SELECT ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] }
+          ],
+          "solution": "SELECT AVG(pages) FROM books",
+          "expected": { "columns": ["AVG(pages)"], "rows": [[281.75]] },
+          "hint": "AVG over the pages column.",
+          "explain": "2254 total pages across 8 books is 281.75."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What does COUNT(*) return?",
+          "options": [
+            "The number of rows in the result",
+            "The number of columns",
+            "The largest value in the table",
+            "The sum of every number"
+          ],
+          "answer": 0,
+          "explain": "COUNT(*) counts rows."
+        }
+      ]
+    },
+    {
+      "title": "Joining Tables",
+      "body": "Real databases split data across tables so nothing is stored twice. Here, each book stores an `author_id` number instead of the author's name, and the names live once in the `authors` table. That number is the thread connecting them.\n\nA `JOIN` follows the thread. You name both tables, and give the rule for matching their rows with `ON`:\n\n```sql\nSELECT books.title, authors.name\nFROM books\nJOIN authors ON books.author_id = authors.id;\n```\n\nRead it as: for each book row, find the author row whose `id` equals the book's `author_id`, and stitch them into one output row. Combined with WHERE, you can filter on either side, like \"books by Japanese authors\", which you will write in the exercise below.\n\nThe `books.author_id` = `authors.id` pattern is called a foreign key relationship, and it is the backbone of every serious database you will ever meet.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "In this database, what connects a book to its author?",
+          "options": [
+            "The book's author_id matches the author's id",
+            "The book's title matches the author's name",
+            "The year columns match",
+            "Nothing, the tables are unrelated"
+          ],
+          "answer": 0,
+          "explain": "A foreign key in one table pointing at a primary key in the other."
+        },
+        {
+          "type": "sql",
+          "prompt": "List every book title together with its author's name.",
+          "starter": "SELECT books.title, authors.name FROM books ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] },
+            { "name": "authors", "columns": ["id", "name", "country"], "rows": [
+              [1, "Ursula K. Le Guin", "USA"],
+              [2, "Haruki Murakami", "Japan"],
+              [3, "Jorge Luis Borges", "Argentina"],
+              [4, "Toni Morrison", "USA"],
+              [5, "Italo Calvino", "Italy"]
+            ] }
+          ],
+          "solution": "SELECT books.title, authors.name FROM books JOIN authors ON books.author_id = authors.id",
+          "expected": {
+            "columns": ["title", "name"],
+            "rows": [
+              ["A Wizard of Earthsea", "Ursula K. Le Guin"],
+              ["The Left Hand of Darkness", "Ursula K. Le Guin"],
+              ["Kafka on the Shore", "Haruki Murakami"],
+              ["Norwegian Wood", "Haruki Murakami"],
+              ["Ficciones", "Jorge Luis Borges"],
+              ["Beloved", "Toni Morrison"],
+              ["Invisible Cities", "Italo Calvino"],
+              ["The Dispossessed", "Ursula K. Le Guin"]
+            ]
+          },
+          "hint": "JOIN authors ON books.author_id = authors.id",
+          "explain": "Eight books, each stitched to its author."
+        },
+        {
+          "type": "sql",
+          "prompt": "List the titles of books by Japanese authors, along with the author's name. (Filter on authors.country.)",
+          "starter": "SELECT books.title, authors.name FROM books JOIN authors ON books.author_id = authors.id ",
+          "db": [
+            { "name": "books", "columns": ["id", "title", "author_id", "year", "pages", "genre"], "rows": [
+              [1, "A Wizard of Earthsea", 1, 1968, 183, "Fantasy"],
+              [2, "The Left Hand of Darkness", 1, 1969, 304, "Fantasy"],
+              [3, "Kafka on the Shore", 2, 2002, 467, "Surreal"],
+              [4, "Norwegian Wood", 2, 1987, 296, "Realistic"],
+              [5, "Ficciones", 3, 1944, 174, "Surreal"],
+              [6, "Beloved", 4, 1987, 324, "Historical"],
+              [7, "Invisible Cities", 5, 1972, 165, "Surreal"],
+              [8, "The Dispossessed", 1, 1974, 341, "Sci-Fi"]
+            ] },
+            { "name": "authors", "columns": ["id", "name", "country"], "rows": [
+              [1, "Ursula K. Le Guin", "USA"],
+              [2, "Haruki Murakami", "Japan"],
+              [3, "Jorge Luis Borges", "Argentina"],
+              [4, "Toni Morrison", "USA"],
+              [5, "Italo Calvino", "Italy"]
+            ] }
+          ],
+          "solution": "SELECT books.title, authors.name FROM books JOIN authors ON books.author_id = authors.id WHERE authors.country = 'Japan'",
+          "expected": {
+            "columns": ["title", "name"],
+            "rows": [
+              ["Kafka on the Shore", "Haruki Murakami"],
+              ["Norwegian Wood", "Haruki Murakami"]
+            ]
+          },
+          "hint": "WHERE works on the joined result, so authors.country is fair game.",
+          "explain": "The join stitched the tables, the WHERE kept just Japan."
+        }
+      ]
+    }
+  ]
+}

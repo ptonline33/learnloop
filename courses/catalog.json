@@ -1,0 +1,54 @@
+{
+  "courses": [
+    {
+      "id": "markdown",
+      "title": "Learn Markdown from Scratch",
+      "subtitle": "Format text for the web with plain characters",
+      "description": "The formatting language of README files, notes, and chat. Learn headings, lists, links, and code blocks by writing them yourself.",
+      "color": "#ff6b35",
+      "lessons": 5,
+      "exercises": 15,
+      "path": "courses/markdown/"
+    },
+    {
+      "id": "networking",
+      "title": "Learn Computer Networking from Scratch",
+      "subtitle": "How the internet actually delivers things",
+      "description": "LANs and WANs, IP addresses and DNS, TCP and UDP, HTTP and HTTPS, and the boxes in your home that move the bits. No jargon without a translation.",
+      "color": "#3ee6ff",
+      "lessons": 5,
+      "exercises": 18,
+      "path": "courses/networking/"
+    },
+    {
+      "id": "neuroscience",
+      "title": "Basics of Neuroscience",
+      "subtitle": "How three pounds of cells think, feel, and remember",
+      "description": "Neurons and glia, action potentials, brain regions, neurotransmitters, and how learning physically rewires the brain. Plain language, real facts.",
+      "color": "#ff3d81",
+      "lessons": 5,
+      "exercises": 18,
+      "path": "courses/neuroscience/"
+    },
+    {
+      "id": "security",
+      "title": "Basics of Computer Security",
+      "subtitle": "How to stay safe without the paranoia",
+      "description": "Passwords that hold, phishing you can spot, malware by name, and the everyday habits — updates, 2FA, backups — that keep the bad guys out. No fear, just fundamentals.",
+      "color": "#3ddc84",
+      "lessons": 5,
+      "exercises": 20,
+      "path": "courses/security/"
+    },
+    {
+      "id": "sql",
+      "title": "Learn SQL from Scratch",
+      "subtitle": "Ask questions, get answers, from a real database in your browser",
+      "description": "SELECT, WHERE, ORDER BY, LIMIT, counting, and JOINs, run against a small library database built right into the page. Every answer is checked against real results.",
+      "color": "#7b5cff",
+      "lessons": 5,
+      "exercises": 16,
+      "path": "courses/sql/"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "id": "markdown",
+  "title": "Learn Markdown from Scratch",
+  "subtitle": "Format text for the web with plain characters",
+  "color": "#ff6b35",
+  "description": "The formatting language of README files, notes, and chat. Learn headings, lists, links, and code blocks by writing them yourself.",
+  "lessons": [
+    {
+      "title": "Headings and Paragraphs",
+      "body": "Markdown turns plain text into formatted documents. You write with ordinary characters like `#`, `-`, and `*`, and a Markdown renderer turns them into headings, lists, and emphasis. It is used everywhere: GitHub README files, Reddit comments, Discord, notepad apps, and most documentation sites.\n\nA heading starts with one or more `#` characters followed by a space. One `#` makes the biggest heading, two `##` the next size down, and so on to six:\n\n```\n# Big title\n## Section\n### Subsection\n```\n\nParagraphs are the easiest part: just write a line of text, then leave a blank line before the next paragraph. No syntax needed.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Which of these is a real reason people choose Markdown?",
+          "options": [
+            "It is plain text that renders into formatted documents almost anywhere",
+            "It can only be written on Windows machines",
+            "It replaces spreadsheets and databases",
+            "It is a compiled programming language"
+          ],
+          "answer": 0,
+          "explain": "Markdown is portable plain text: readable as-is, and rendered into formatted output by countless tools."
+        },
+        {
+          "type": "input",
+          "prompt": "Write the exact Markdown line for a level-1 heading that says: `Notes`",
+          "answers": ["# Notes"],
+          "caseSensitive": true,
+          "hint": "One hash, one space, then the word.",
+          "explain": "A single # followed by a space makes the biggest heading."
+        },
+        {
+          "type": "md",
+          "prompt": "In the editor, write a level-2 heading called `Today`, followed by a paragraph that says: `I am learning Markdown`",
+          "starter": "",
+          "patterns": [
+            { "re": "^## Today\\s*$", "m": "a line starting with `## Today`" },
+            { "re": "I am learning Markdown", "m": "a paragraph containing `I am learning Markdown`" }
+          ],
+          "solution": "## Today\n\nI am learning Markdown",
+          "hint": "Two hashes for a level-2 heading, blank line, then the paragraph.",
+          "explain": "`## Today` renders as a medium heading, and the plain line below it becomes a paragraph."
+        }
+      ]
+    },
+    {
+      "title": "Bold and Italic",
+      "body": "Emphasis wraps words in marker characters. Wrap text in double asterisks for **bold**, single asterisks for *italic*:\n\n```\nThis is **bold** and this is *italic* and this is ***both***.\n```\n\nUnderscores work the same way: `__bold__` and `_italic_`. Most style guides pick asterisks and stick with them, because they cause fewer surprises when a sentence contains two words side by side.\n\nOne rule matters most: no spaces between the markers and the word they wrap. `** word **` will not render as bold.",
+      "exercises": [
+        {
+          "type": "input",
+          "prompt": "Write the Markdown that shows the word `important` in bold",
+          "answers": ["**important**", "__important__"],
+          "caseSensitive": true,
+          "hint": "Double asterisks, no spaces inside.",
+          "explain": "**important** renders as bold text."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What does `*text*` render as?",
+          "options": ["Italic", "Bold", "A list item", "A blockquote"],
+          "answer": 0,
+          "explain": "Single asterisks around text make it italic."
+        },
+        {
+          "type": "md",
+          "prompt": "Write one sentence that contains the word `bold` in bold and the word `italic` in italic, with any other words around them",
+          "starter": "",
+          "patterns": [
+            { "re": "\\*\\*bold\\*\\*|__bold__", "m": "the word bold wrapped for bold" },
+            { "re": "(?<![\\*_])\\*italic\\*(?![\\*_])|_italic_", "m": "the word italic wrapped for italic" }
+          ],
+          "solution": "This word is **bold** and this one is *italic*.",
+          "hint": "Double asterisks for bold, single for italic, no spaces inside the markers."
+        }
+      ]
+    },
+    {
+      "title": "Lists",
+      "body": "Lists are the workhorse of Markdown. A bulleted (unordered) list starts each line with a dash, asterisk, or plus sign, followed by a space:\n\n```\n- Milk\n- Bread\n- Cheese\n```\n\nA numbered (ordered) list starts each line with a number and a dot:\n\n```\n1. Read\n2. Practice\n3. Rest\n```\n\nYou can nest lists by indenting the sub-items with spaces (usually two to four):\n\n```\n- Fruit\n  - Apples\n  - Bananas\n```\n\nThe renderer numbers ordered lists for you, so `1.`, `1.`, `1.` on every line still comes out as 1, 2, 3.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Which line correctly starts a numbered list item that says `Read`?",
+          "options": ["1. Read", "1) Read is the only valid form", "- Read", "# Read"],
+          "answer": 0,
+          "explain": "`1. Read` with a number, a dot, and a space is the standard form."
+        },
+        {
+          "type": "input",
+          "prompt": "Write the first line of a bulleted list item that says `Milk`",
+          "answers": ["- Milk", "* Milk", "+ Milk"],
+          "caseSensitive": true,
+          "hint": "A dash, a space, then the word.",
+          "explain": "Any of -, *, or + followed by a space makes a bullet."
+        },
+        {
+          "type": "md",
+          "prompt": "Make a bulleted shopping list with exactly three items: `Milk`, `Bread`, and `Cheese`",
+          "starter": "",
+          "patterns": [
+            { "re": "^(?:[-*+]) Milk\\s*$", "m": "a line that is a bullet for Milk" },
+            { "re": "^(?:[-*+]) Bread\\s*$", "m": "a line that is a bullet for Bread" },
+            { "re": "^(?:[-*+]) Cheese\\s*$", "m": "a line that is a bullet for Cheese" }
+          ],
+          "solution": "- Milk\n- Bread\n- Cheese",
+          "hint": "Three lines, each starting with a dash and a space."
+        }
+      ]
+    },
+    {
+      "title": "Links and Images",
+      "body": "A link is square brackets for the visible text, then round brackets for the address:\n\n```\n[Visit Example](https://example.com)\n```\n\nAn image is exactly the same, with an exclamation mark in front. The square brackets hold the alt text, which describes the image for people who cannot see it:\n\n```\n![A friendly cat](https://example.com/cat.jpg)\n```\n\nThat single `!` is the whole difference between a link and an image, so it is worth memorizing: brackets alone point somewhere, an exclamation mark first pulls a picture in.",
+      "exercises": [
+        {
+          "type": "input",
+          "prompt": "Write a link whose visible text is `Search` and which points to `https://example.com`",
+          "answers": ["[Search](https://example.com)"],
+          "caseSensitive": true,
+          "hint": "Square brackets for the text, round brackets for the URL.",
+          "explain": "[Search](https://example.com) renders as a clickable link."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What turns a link into an image?",
+          "options": [
+            "An ! before the square brackets",
+            "Capital letters in the URL",
+            "Swapping the brackets: (text)[url]",
+            "Nothing, links and images are the same"
+          ],
+          "answer": 0,
+          "explain": "![alt](url) embeds an image; without the ! it stays a link."
+        },
+        {
+          "type": "md",
+          "prompt": "Write an image with alt text `A cat` pointing to `https://example.com/cat.jpg`, and below it a link with the text `Visit` pointing to `https://example.com`",
+          "starter": "",
+          "patterns": [
+            { "re": "!\\[A cat\\]\\(https://example\\.com/cat\\.jpg\\)", "m": "the image line ![A cat](https://example.com/cat.jpg)" },
+            { "re": "\\[Visit\\]\\(https://example\\.com\\)", "m": "the link line [Visit](https://example.com)" }
+          ],
+          "solution": "![A cat](https://example.com/cat.jpg)\n\n[Visit](https://example.com)",
+          "hint": "Image first with the !, then a blank line, then the link without it."
+        }
+      ]
+    },
+    {
+      "title": "Code, Quotes, and Rules",
+      "body": "Inline code goes between single backticks, and it is the standard way to mention a command or filename inside a sentence: `npm install`.\n\nA fenced code block uses three backticks on their own lines, and keeps everything inside exactly as written:\n\n````\n```\nprint(\"hello\")\n```\n````\n\nA blockquote starts a line with `>` and a space, which renders as an indented quotation:\n\n```\n> Be curious.\n```\n\nA horizontal rule is three dashes on their own line (`---`) and draws a dividing line. Tables exist too, built from pipes and dashes, but they are the least fun part of Markdown, so learn them the day you actually need one.",
+      "exercises": [
+        {
+          "type": "mcq",
+          "prompt": "Which of these makes a fenced code block?",
+          "options": ["Three backticks on their own line", "Three dots on their own line", "A > before the line", "Two asterisks around the text"],
+          "answer": 0,
+          "explain": "A fence is three backticks, once above the code and once below."
+        },
+        {
+          "type": "input",
+          "prompt": "Write the command `npm install` as inline code",
+          "answers": ["`npm install`"],
+          "caseSensitive": true,
+          "hint": "One backtick on each side.",
+          "explain": "Backticks make inline code, shown in a monospace font."
+        },
+        {
+          "type": "md",
+          "prompt": "Write a blockquote that says `Be curious`, and below it a fenced code block containing the line `print(\"hi\")`",
+          "starter": "",
+          "patterns": [
+            { "re": "^> Be curious\\s*$", "m": "a quote line starting with `> Be curious`" },
+            { "re": "^```[a-z]*\\s*$", "m": "a fence line with three backticks" },
+            { "re": "^print\\(\"hi\"\\)\\s*$", "m": "the code line print(\"hi\") inside the fence" }
+          ],
+          "solution": "> Be curious\n\n```\nprint(\"hi\")\n```",
+          "hint": "Quote line with `> `, then blank line, then fence, code, fence."
+        }
+      ]
+    }
+  ]
+}
