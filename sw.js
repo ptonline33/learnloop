@@ -1,6 +1,6 @@
 /* Learnloop service worker: app shell cached up front, course JSON refreshed
  * from the network so new content shows up, fonts and scripts served offline. */
-const VERSION = "learnloop-v2";
+const VERSION = "learnloop-v3";
 const SHELL = [
   "./",
   "index.html",
