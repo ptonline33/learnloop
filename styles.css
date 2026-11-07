@@ -108,6 +108,38 @@ body {
   padding: 6px 14px;
   font-size: 0.95rem;
 }
+.sync-wrap { position: relative; }
+.sync-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: min(320px, 86vw);
+  background: var(--panel-2);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.45);
+  z-index: 50;
+}
+.sync-title { margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: .18em; color: var(--accent-2); }
+.sync-desc { margin: 6px 0 0; font-size: .9rem; color: var(--muted); }
+.sync-row { display: flex; gap: 8px; margin-top: 12px; }
+.sync-row input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.pill-mini { padding: 6px 10px; }
+.sync-status { margin: 10px 0 0; font-size: .85rem; color: var(--good); font-weight: 700; }
+.sync-tip { margin: 6px 0 0; font-size: .8rem; color: var(--muted); }
 
 main { max-width: 1100px; margin: 0 auto; padding: clamp(18px, 4vw, 40px); }
 .view { animation: rise 0.45s ease both; }

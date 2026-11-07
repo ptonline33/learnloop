@@ -1,0 +1,9 @@
+{
+  "name": "learnloop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Learn by doing. Short lessons with hands-on exercises, fully offline. Static PWA with cross-device sync.",
+  "dependencies": {
+    "@vercel/blob": "^2.8.0"
+  }
+}

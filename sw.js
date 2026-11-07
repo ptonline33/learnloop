@@ -1,6 +1,6 @@
 /* Learnloop service worker: app shell cached up front, course JSON refreshed
  * from the network so new content shows up, fonts and scripts served offline. */
-const VERSION = "learnloop-v1";
+const VERSION = "learnloop-v2";
 const SHELL = [
   "./",
   "index.html",
@@ -30,9 +30,14 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
-  if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  if (url.pathname.includes("/api/")) {
+    if (req.method !== "GET") return;
+    event.respondWith(fetch(req).catch(() => new Response(JSON.stringify({ done: [] }), { status: 200, headers: { "Content-Type": "application/json" } })));
+    return;
+  }
+  if (req.method !== "GET") return;
 
   if (url.pathname.includes("/courses/") && url.pathname.endsWith(".json")) {
     event.respondWith(networkFirst(req));

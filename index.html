@@ -17,6 +17,19 @@
   <header class="topbar">
     <button id="homeBtn" class="pill" type="button" hidden>&larr; Library</button>
     <a class="brand" href="#/">Learnloop</a>
+    <div class="sync-wrap">
+      <button id="syncBtn" class="pill" type="button" aria-haspopup="true">SYNC ······</button>
+      <div id="syncPanel" class="sync-panel" hidden>
+        <p class="sync-title">Cross-device sync</p>
+        <p class="sync-desc">Put the same code on every device and your completion follows you. Stored privately in Vercel Blob.</p>
+        <div class="sync-row">
+          <input id="syncInput" type="text" placeholder="ABC123" maxlength="6" autocomplete="off" spellcheck="false" aria-label="Sync code">
+          <button id="syncNewBtn" class="pill pill-mini" type="button" title="Generate a new code">↻</button>
+        </div>
+        <p id="syncStatus" class="sync-status">Saved locally · sign in to sync</p>
+        <p class="sync-tip">Tip: pick a personal code like "MNOPQR" and type it on all your devices once.</p>
+      </div>
+    </div>
     <span id="progressPill" class="progress-pill" hidden></span>
   </header>
 
